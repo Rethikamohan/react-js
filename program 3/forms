@@ -1,0 +1,55 @@
+import React from 'react'
+import { use } from 'react'
+import { useState } from 'react'
+
+function App() {
+  const [name,setName]=useState("")
+  const [email,setEmail]=useState("")
+  const [password,setPassword]=useState("")
+  const [submittedData,setSubmittedData]=useState(null)
+  const handleSubmit=(e)=>{
+  e.preventdefault()
+  const formdata={name,email,password}
+  setSubmittedData(formData);
+  setName ("")
+  setEmail("")
+  setPassword("")
+}
+  return (
+    <div>
+      <h1>Forms</h1>
+      <form>
+      <label htmlFor="">Name</label>
+      <input type="text"
+      placeholder='enter your Name' 
+      value={name}
+      onChange={(e)=>setName(e.target.value)}
+      />
+       <label htmlFor="">Email</label>
+      <input type="email"
+      placeholder='enter your Email' 
+      value={email}
+      onChange={(e)=>setEmail(e.target.value)}
+      />
+      <label htmlFor="">Password</label>
+      <input type="password"
+      placeholder='enter your Password' 
+      value={password}
+      onChange={(e)=>setPassword(e.target.value)}
+      />
+      <button type="submit">Submit</button>
+      </form>
+      
+      {submittedData &&(
+    <div>
+    <h2>submitted data's</h2>
+    <p><strong>Name:</strong>{submittedData.name}</p>
+    <p><strong>Email:</strong>{submittedData.email}</p>
+    <p><strong>Password:</strong>{submittedData.password}</p>
+    </div>
+      )}
+      </div>
+  )}
+      
+
+export default App
